@@ -19,6 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
+        /*
         // kendi cisimlerimizi oluşturma
         //küp oluşturma
         let myBox = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
@@ -35,10 +36,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(mySphere)
         
         sceneView.automaticallyUpdatesLighting = true
+        */
         
+        //gezegen oluşturma
+        let world = createSphere(radius: 0.1, content: "world.png", vector: SCNVector3(x: 0, y: 0.2, z: -1))
+        sceneView.scene.rootNode.addChildNode(world)
         
+        let mars = createSphere(radius: 0.2, content: "mars.png", vector: SCNVector3(x: 0.5, y: 0.2, z: -1))
+        sceneView.scene.rootNode.addChildNode(mars)
         
+        let venus = createSphere(radius: 0.2, content: "venus.png", vector: SCNVector3(x: 1, y: 0.2, z: -1))
+        sceneView.scene.rootNode.addChildNode(venus)
     }
+    
     
     func createSphere(radius:CGFloat, content : String , vector : SCNVector3) -> SCNNode{
         let mySphere = SCNSphere(radius: radius)
